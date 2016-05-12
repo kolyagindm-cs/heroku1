@@ -61,7 +61,8 @@ POSSIBILITY OF SUCH DAMAGE.
     </style>
 
 
-    <script type="text/javascript" src="sdk/js/canvas-all.js"></script>
+    <!--<script type="text/javascript" src="sdk/js/canvas-all.js"></script>-->
+	<script type="text/javascript" src="https://na1.salesforce.com/canvas/sdk/js/36.0/canvas-all.js"></script>
     <script type="text/javascript" src="js/jquery-1.8.3.js"></script>
     <script type="text/javascript" src="js/jquery-ui-1.9.2.custom.min.js"></script>
     <script type="text/javascript" src="js/jquery.chromatable.js"></script>
