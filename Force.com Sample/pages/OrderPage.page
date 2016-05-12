@@ -1,0 +1,50 @@
+<apex:page standardController="Contact" extensions="OrderClass" >
+    <script type="text/javascript" src="/canvas/sdk/js/30.0/controller.js" ></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    
+    <apex:form >
+        <apex:pageBlock id="test" title="Order Request Form">
+            <apex:pageBlockSection title="Customer Info">
+                <apex:outputField value="{!c.Name}" />
+                <apex:inputField value="{!c.Phone}" />
+                <apex:inputField value="{!c.Email}" />
+                <apex:inputField value="{!c.MailingStreet}" />
+                <apex:inputField value="{!c.MailingCity}" />
+                <apex:inputField value="{!c.MailingState}" />
+                <apex:inputField value="{!c.MailingPostalCode}" />
+                
+                <apex:inputField value="{!pr.Quantity__c}" />
+                <apex:inputField value="{!pr.Description__c}" />
+            </apex:pageBlockSection>
+        
+            
+            <apex:pageBlockSection title="Warehouse Info" columns="1">
+                <div style="border: 1; border-color: black; border-style: solid">
+                    <apex:canvasApp developerName="Products_Application" canvasId="prodapp" />
+                </div>
+            </apex:pageBlockSection>
+        
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Submit" action="{!submitOrder}" id="submitBtn"  />
+            </apex:pageBlockButtons>
+
+        </apex:pageBlock>
+    </apex:form>
+    
+    <script>
+        $( document ).ready(function() {
+            window.setTimeout(function() {
+                $('[id*="canvas-frame"]').css("border-width", "1px").css('border-color', "black").css("border-style", "solid");
+               }, 500);
+            $('[id*="submitBtn"]').addClass("btnDisabled");
+            // Subscribe to the events event1
+            Sfdc.canvas.controller.subscribe(
+                {name : 'mynamespace.myevent1', onData : function(e) {
+                    //$('[id*="submitBtn"]').toggleClass('btnDisabled', false).attr('disabled',null);
+                    $('[id*="submitBtn"]').removeClass("btnDisabled");
+                 }}
+            );
+        });
+            
+    </script>
+</apex:page>
