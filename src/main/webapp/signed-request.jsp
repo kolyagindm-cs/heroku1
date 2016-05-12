@@ -69,13 +69,14 @@ POSSIBILITY OF SUCH DAMAGE.
     <script type="text/javascript" src="scripts/shipment.js"></script>
 
     <script>
+		var signedRequest = '<%=signedRequestJson%>';
         var module;
 
         $(document).ready(function(){
             module.draw();
         });
         Sfdc.canvas(function() {
-            var sr = JSON.parse('<%=signedRequestJson%>');
+            var sr = JSON.parse(signedRequest);
             module = shipment.instance(sr);
             Sfdc.canvas.client.subscribe(sr.client, module.subscriptions);
 			Sfdc.canvas.client.subscribe(sr.client, 
